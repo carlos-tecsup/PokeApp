@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Pokedex</title>
+	<link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+	<link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href = "@{/css/bootstrap.min.css}">
+</head>
+<body>
+	<div class="container my-5">
+		<div class="row">
+			<div class="col-xl-12 ">
+				<div class="row" style="margin-bottom: 22px;">
+					<div th:each="pokemon: ${pokemons}" class="col-md-4">
+						<div class="card mb-3">
+							<div class="card-body">
+
+								<div class="row">
+									<div class="col-6 col-sm-6">
+										<h3 th:text="${pokemon.name}" class="card-title"></h3>
+									</div>
+									<div class="col-6 col-sm-6">
+										<img th:src="${pokemon.urlImage}" class="img-fluid" alt="...">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<nav th:replace="paginator-nav :: paginator"></nav>
+</body>
+</html>
