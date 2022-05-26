@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Pokedex</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href = "@{/css/bootstrap.min.css}">
+</head>
+<body>
+    <div class="bg bg-{{pokemon.main_type}} py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 offset-sm-2">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="mt-2">
+                                <h1 th:text="${pokemon.name}"></h1>
+                                    <tr th:each="type: ${pokemon.types}">
+                                        <span class="badge bg-grass border me-1 rounded-pill">
+                                            <td th:text="${type.name}" />
+                                        </span>
+                                    </tr>
+                            </div>
+
+                            <ul class="list-group list-group-flush mt-4" style="width: 20rem;">
+                                <li class="list-group-item bg-transparent">Altura <b class="float-end" th:text="${pokemon.height+ ' m'}" style="margin-left: 11rem"></b></li>
+                                <li class="list-group-item bg-transparent">Peso <b class="float-end" th:text="${pokemon.weight+ ' kg'}" style="margin-left: 11rem"> </b></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6">
+                            <img th:src="${pokemon.urlImage}" alt="" class="img-fluid d-block mx-auto" style="width: 300px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="custom-shape-divider-bottom">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path
+                        d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+                        class="shape-fill"></path>
+            </svg>
+        </div>
+    </div>
+
+</body>
+</html>
