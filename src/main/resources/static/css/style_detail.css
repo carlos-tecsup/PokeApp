@@ -41,6 +41,40 @@
 .card-title{
     text-transform: capitalize;
 }
+
+#back_arrow{
+    margin-left: 40px;
+}
+
+#dimensions{
+    width: 20rem;
+}
+
+.height{
+    margin-left: 11rem
+}
+
+.baseExperience{
+    margin-left: 9rem
+}
+
+.weight{
+    margin-left: 12rem
+}
+
+#image{
+    width: 300px;
+}
+
+#card-evolution{
+    margin-top: 60px;
+    margin-bottom: 30px;
+}
+
+#image-evolution{
+    width: 150px;
+}
+
 .bg-normal {
     background-color: #A8A77A;
     color: #fff;
