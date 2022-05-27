@@ -2,7 +2,7 @@ package com.avatar.pokeapp.service.impl;
 
 import com.avatar.pokeapp.model.api.Pokemon;
 import com.avatar.pokeapp.model.api.PokemonDetail;
-import com.avatar.pokeapp.model.thirdparty.PokemonResponse;
+import com.avatar.pokeapp.model.response.PokemonResponse;
 import com.avatar.pokeapp.proxy.service.PokeService;
 import com.avatar.pokeapp.service.PokemonService;
 import lombok.RequiredArgsConstructor;

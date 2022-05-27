@@ -8,10 +8,10 @@
         <div class="col-md-8">
             <nav aria-label="Pagination">
                 <ul class="pagination justify-content-center">
-                    <li class="page-item" th:classappend="${prev == -1 ? 'disabled': ''}">
+                    <li class="page-item" th:classappend="${prev == 0 ? 'disabled': ''}">
                         <a class="page-link" th:href="@{|/pokemons/${prev}|}">Anterior</a>
                     </li>
-                    <li class="page-item"  th:each="i: ${#numbers.sequence(0, 10)}" th:class="${current == i ? 'page-item active': 'page-item'}">
+                    <li class="page-item"  th:each="i: ${#numbers.sequence(1, 10)}" th:class="${current == i ? 'page-item active': 'page-item'}">
                         <a class="page-link" th:text="${i}" th:href="@{|/pokemons/${i}|}"></a>
                     </li>
 

@@ -1,11 +1,11 @@
 package com.avatar.pokeapp.controller;
 
+import com.avatar.pokeapp.model.api.PokemonDetail;
 import com.avatar.pokeapp.model.dto.PokemonDetailDto;
 import com.avatar.pokeapp.model.dto.PokemonDto;
-import com.avatar.pokeapp.model.thirdparty.PokemonResponse;
+import com.avatar.pokeapp.model.response.PokemonResponse;
 import com.avatar.pokeapp.service.PokemonService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -37,7 +37,7 @@ public class PokemonController {
     }
 
     @RequestMapping(value = "/pokemon/detail/{id}", method = RequestMethod.GET)
-    public String getPokemonDetail(Model model,@PathVariable(value = "id") String id) throws IOException {
+    public String getPokemonDetail(Model model, @PathVariable(value = "id") String id) throws IOException {
         PokemonResponse pokemonResponse = this.pokemonService.getPokemonInformation(id);
         PokemonDetailDto pokemon = new PokemonDetailDto();
         pokemon.setUrlImage(pokemonResponse.getSprites().getOther().getDream_world().getFront_default());
@@ -45,10 +45,18 @@ public class PokemonController {
         pokemon.setTypes(pokemonResponse.getTypes().stream()
                                                    .map(t->t.getType())
                                                    .collect(Collectors.toList()));
-        pokemon.setHeight(pokemonResponse.getHeight());
-        pokemon.setWeight(pokemonResponse.getWeight());
-        model.addAttribute("pokemon", pokemon);
+        pokemon.setAbilities(pokemonResponse.getAbilities().stream()
+                                                    .map(a->a.getAbility())
+                                                    .collect(Collectors.toList()));
+        pokemon.setMainType(pokemonResponse.getTypes().stream()
+                                                    .map(t->t.getType().getName())
+                                                    .findFirst().get());
 
+        pokemon.setHeight(pokemonResponse.getHeight()/10);
+        pokemon.setWeight(pokemonResponse.getWeight()/10);
+        pokemon.setBaseExperience(pokemonResponse.getBase_experience());
+
+        model.addAttribute("pokemon", pokemon);
         return "detail";
     }
 }

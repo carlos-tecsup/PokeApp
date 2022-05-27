@@ -2,45 +2,95 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Pokedex</title>
+    <title>Detalle de pokemon</title>
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style_detail.css}">
     <link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href = "@{/css/bootstrap.min.css}">
 </head>
 <body>
-    <div class="bg bg-{{pokemon.main_type}} py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-8 offset-sm-2">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="mt-2">
-                                <h1 th:text="${pokemon.name}"></h1>
-                                    <tr th:each="type: ${pokemon.types}">
-                                        <span class="badge bg-grass border me-1 rounded-pill">
-                                            <td th:text="${type.name}" />
-                                        </span>
-                                    </tr>
-                            </div>
+<div class="bg py-5 py-5" th:classappend="bg-+${pokemon.mainType}">
+    <div class="position-absolute top-0 start-0" style="margin-left: 40px">
+        <a class="btn btn-lg text-white" href="http://localhost:8080/pokemons/1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-arrow-left"
+                 viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                      d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+            </svg>
+        </a>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 offset-sm-2">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="mt-2">
+                            <h1  class="card-title" th:text="${pokemon.name}"></h1>
+                                <tr th:each="type: ${pokemon.types}">
+                                    <span class="badge border me-1 rounded-pill" th:classappend="bg-+${pokemon.mainType}">
+                                        <td th:text="${type.name}" />
+                                    </span>
+                                </tr>
+                        </div>
 
-                            <ul class="list-group list-group-flush mt-4" style="width: 20rem;">
-                                <li class="list-group-item bg-transparent">Altura <b class="float-end" th:text="${pokemon.height+ ' m'}" style="margin-left: 11rem"></b></li>
-                                <li class="list-group-item bg-transparent">Peso <b class="float-end" th:text="${pokemon.weight+ ' kg'}" style="margin-left: 11rem"> </b></li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-6">
-                            <img th:src="${pokemon.urlImage}" alt="" class="img-fluid d-block mx-auto" style="width: 300px;">
-                        </div>
+                        <ul class="list-group list-group-flush mt-4" style="width: 20rem;">
+                            <li class="list-group-item bg-transparent">Altura <b class="float-end" th:text="${pokemon.height+ ' m'}" style="margin-left: 11rem"></b></li>
+                            <li class="list-group-item bg-transparent">Peso <b class="float-end" th:text="${pokemon.weight+ ' kg'}" style="margin-left: 12rem"> </b></li>
+                            <li class="list-group-item bg-transparent">Experiencia <b class="float-end" th:text="${pokemon.baseExperience+ ' xp'}" style="margin-left: 9rem"></b></li>
+
+                        </ul>
+                    </div>
+                    <div class="col-sm-6">
+                        <img th:src="${pokemon.urlImage}" alt="" class="img-fluid d-block mx-auto" style="width: 300px;">
                     </div>
                 </div>
             </div>
         </div>
-        <div class="custom-shape-divider-bottom">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path
-                        d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-                        class="shape-fill"></path>
-            </svg>
-        </div>
     </div>
+    <div class="custom-shape-divider-bottom">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path
+                    d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+                    class="shape-fill"></path>
+        </svg>
+    </div>
+</div>
+
+<div class="container my-3">
+    <div class="row">
+        <div class="col-sm-8 offset-sm-2">
+            <div class="card mb-3">
+                <h4 class="card-header">Habilidades
+              </span>
+                </h4>
+                <ul class="list-group list-group-flush">
+                    <li th:each="abilitie: ${pokemon.abilities}" th:text="${abilitie.name}" class="list-group-item">
+                    </li>
+                </ul>
+            </div>
+
+            <!-- evolutions -->
+            <div class="row" style="margin-top: 60px;margin-bottom: 30px">
+                <div class="card-tittle">
+                    <h2>
+                        Cadena de evolución:
+                    </h2>
+                </div>
+            </div>
+            <div class="row">
+                <div th:each="i: ${#numbers.sequence(0, 3)}" class="col-4 mb-3">
+                    <div class="card">
+                        <div class="card-body" th:classappend="bg-+${pokemon.mainType}">
+                            <h4 class="card-title text-center mb-3">
+                                as
+                            </h4>
+                            <img th:src="${pokemon.urlImage}" alt="" class="img-fluid d-block mx-auto" style="width: 150px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+         </div>
+    </div>
+</div>
 
 </body>
 </html>

@@ -1,4 +1,4 @@
-package com.avatar.pokeapp.model.thirdparty;
+package com.avatar.pokeapp.model.response;
 
 import lombok.Data;
 

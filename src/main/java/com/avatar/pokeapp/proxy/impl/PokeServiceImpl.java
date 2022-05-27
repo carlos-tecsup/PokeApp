@@ -1,7 +1,8 @@
 package com.avatar.pokeapp.proxy.impl;
 
-import com.avatar.pokeapp.model.thirdparty.PokemonListResponse;
-import com.avatar.pokeapp.model.thirdparty.PokemonResponse;
+import com.avatar.pokeapp.model.response.EvolutionChainResponse;
+import com.avatar.pokeapp.model.response.PokemonListResponse;
+import com.avatar.pokeapp.model.response.PokemonResponse;
 import com.avatar.pokeapp.proxy.api.PokeApi;
 import com.avatar.pokeapp.proxy.service.PokeService;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +25,7 @@ public class PokeServiceImpl implements PokeService {
     public PokemonListResponse getAllPokemon(int pageNumber) throws IOException {
         int limitPerPage = LIMIT_PER_PAGE;
 
-        int offset = limitPerPage * pageNumber;
+        int offset = limitPerPage * (pageNumber-1);
 
         Response<PokemonListResponse> response = pokeApi.pokemonList(offset,limitPerPage).execute();
 

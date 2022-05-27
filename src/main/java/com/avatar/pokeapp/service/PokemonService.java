@@ -2,7 +2,7 @@ package com.avatar.pokeapp.service;
 
 import com.avatar.pokeapp.model.api.Pokemon;
 import com.avatar.pokeapp.model.api.PokemonDetail;
-import com.avatar.pokeapp.model.thirdparty.PokemonResponse;
+import com.avatar.pokeapp.model.response.PokemonResponse;
 
 import java.io.IOException;
 import java.util.List;
