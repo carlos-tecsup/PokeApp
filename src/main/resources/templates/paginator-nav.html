@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
-
 <nav th:fragment="paginator">
     <div class="row">
         <div class="col-md-2"></div>
@@ -11,10 +10,10 @@
                     <li class="page-item" th:classappend="${prev == 0 ? 'disabled': ''}">
                         <a class="page-link" th:href="@{|/pokemons/${prev}|}">Anterior</a>
                     </li>
-                    <li class="page-item"  th:each="i: ${#numbers.sequence(1, 10)}" th:class="${current == i ? 'page-item active': 'page-item'}">
+                    <li class="page-item" th:each="i: ${#numbers.sequence(1, 10)}"
+                        th:class="${current == i ? 'page-item active': 'page-item'}">
                         <a class="page-link" th:text="${i}" th:href="@{|/pokemons/${i}|}"></a>
                     </li>
-
                     <li class="page-item" th:classappend="${current == 10 ? 'disabled': ''}">
                         <a class="page-link" th:href="@{|/pokemons/${next}|}">Siguiente</a>
                     </li>
@@ -23,9 +22,6 @@
         </div>
         <div class="col-md-2"></div>
     </div>
-
-
 </nav>
-
 </body>
 </html>

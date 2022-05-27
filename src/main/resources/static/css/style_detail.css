@@ -1,7 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
 .bg {
     position: relative;
 }
+
 .custom-shape-divider-bottom {
     position: absolute;
     left: 0;
@@ -10,12 +10,14 @@
     line-height: 0;
     transform: rotate(180deg);
 }
+
 .custom-shape-divider-bottom svg {
     position: relative;
     display: block;
     width: calc(100% + 1.3px);
     height: 50px;
 }
+
 .custom-shape-divider-top {
     position: absolute;
     top: -1px;
@@ -24,12 +26,14 @@
     overflow: hidden;
     line-height: 0;
 }
+
 .custom-shape-divider-top svg {
     position: relative;
     display: block;
     width: calc(100% + 1.3px);
     height: 30px;
 }
+
 .custom-shape-divider-bottom .shape-fill,
 .custom-shape-divider-top .shape-fill {
     fill: #FFFFFF;
@@ -38,40 +42,41 @@
 .card {
     cursor: pointer;
 }
-.card-title{
+
+.card-title {
     text-transform: capitalize;
 }
 
-#back_arrow{
+#back_arrow {
     margin-left: 40px;
 }
 
-#dimensions{
+#dimensions {
     width: 20rem;
 }
 
-.height{
+.height {
     margin-left: 11rem
 }
 
-.baseExperience{
+.baseExperience {
     margin-left: 9rem
 }
 
-.weight{
+.weight {
     margin-left: 12rem
 }
 
-#image{
+#image {
     width: 300px;
 }
 
-#card-evolution{
+#card-evolution {
     margin-top: 60px;
     margin-bottom: 30px;
 }
 
-#image-evolution{
+#image-evolution {
     width: 150px;
 }
 

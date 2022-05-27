@@ -1,6 +1,5 @@
 package com.avatar.pokeapp.controller;
 
-import com.avatar.pokeapp.model.api.PokemonDetail;
 import com.avatar.pokeapp.model.dto.PokemonDetailDto;
 import com.avatar.pokeapp.model.dto.PokemonDto;
 import com.avatar.pokeapp.model.response.PokemonResponse;
@@ -8,7 +7,10 @@ import com.avatar.pokeapp.service.PokemonService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.io.IOException;
 import java.util.List;
@@ -46,17 +48,17 @@ public class PokemonController {
                                                    .map(t->t.getType())
                                                    .collect(Collectors.toList()));
         pokemon.setAbilities(pokemonResponse.getAbilities().stream()
-                                                    .map(a->a.getAbility())
-                                                    .collect(Collectors.toList()));
+                                                            .map(a->a.getAbility())
+                                                            .collect(Collectors.toList()));
         pokemon.setMainType(pokemonResponse.getTypes().stream()
-                                                    .map(t->t.getType().getName())
-                                                    .findFirst().get());
+                                                       .map(t->t.getType().getName())
+                                                       .findFirst().get());
 
         pokemon.setHeight(pokemonResponse.getHeight()/10);
         pokemon.setWeight(pokemonResponse.getWeight()/10);
         pokemon.setBaseExperience(pokemonResponse.getBase_experience());
-
         model.addAttribute("pokemon", pokemon);
+
         return "detail";
     }
 }

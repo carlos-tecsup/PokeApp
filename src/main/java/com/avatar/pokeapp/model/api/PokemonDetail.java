@@ -1,6 +1,5 @@
 package com.avatar.pokeapp.model.api;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 
@@ -12,11 +11,6 @@ public class PokemonDetail {
 
     public PokemonDetail(String id, String name, String imgUrl) {
         this.id = id;
-        this.name = name;
-        this.imgUrl = imgUrl;
-    }
-
-    public PokemonDetail(String name, String imgUrl) {
         this.name = name;
         this.imgUrl = imgUrl;
     }

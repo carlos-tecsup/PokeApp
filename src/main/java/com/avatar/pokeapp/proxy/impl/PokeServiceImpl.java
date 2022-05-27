@@ -1,6 +1,5 @@
 package com.avatar.pokeapp.proxy.impl;
 
-import com.avatar.pokeapp.model.response.EvolutionChainResponse;
 import com.avatar.pokeapp.model.response.PokemonListResponse;
 import com.avatar.pokeapp.model.response.PokemonResponse;
 import com.avatar.pokeapp.proxy.api.PokeApi;
@@ -25,9 +24,9 @@ public class PokeServiceImpl implements PokeService {
     public PokemonListResponse getAllPokemon(int pageNumber) throws IOException {
         int limitPerPage = LIMIT_PER_PAGE;
 
-        int offset = limitPerPage * (pageNumber-1);
+        int offset = limitPerPage * (pageNumber - 1);
 
-        Response<PokemonListResponse> response = pokeApi.pokemonList(offset,limitPerPage).execute();
+        Response<PokemonListResponse> response = pokeApi.pokemonList(offset, limitPerPage).execute();
 
         if (!response.isSuccessful()) {
             throw new IOException(response.errorBody() != null ? response.errorBody().string() : "Unknown error");
