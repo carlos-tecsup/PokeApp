@@ -1,7 +1,9 @@
 package com.avatar.pokeapp.proxy.impl;
 
+import com.avatar.pokeapp.model.response.EvolutionChainResponse;
 import com.avatar.pokeapp.model.response.PokemonListResponse;
 import com.avatar.pokeapp.model.response.PokemonResponse;
+import com.avatar.pokeapp.model.response.PokemonSpecieResponse;
 import com.avatar.pokeapp.proxy.api.PokeApi;
 import com.avatar.pokeapp.proxy.service.PokeService;
 import lombok.RequiredArgsConstructor;
@@ -37,6 +39,35 @@ public class PokeServiceImpl implements PokeService {
     @Override
     public PokemonResponse getPokemonById(String id) throws IOException {
         Response<PokemonResponse> response = pokeApi.getPokemonById(id).execute();
+
+        if (!response.isSuccessful()) {
+            throw new IOException(response.errorBody() != null ? response.errorBody().string() : "Unknown error");
+        }
+        return response.body();
+    }
+    @Override
+    public PokemonResponse getPokemonByName(String name) throws IOException {
+        Response<PokemonResponse> response = pokeApi.getPokemonByName(name).execute();
+
+        if (!response.isSuccessful()) {
+            throw new IOException(response.errorBody() != null ? response.errorBody().string() : "Unknown error");
+        }
+        return response.body();
+    }
+
+    @Override
+    public EvolutionChainResponse getEvolutionChain(String idEvolutionChain) throws IOException {
+        Response<EvolutionChainResponse> response = pokeApi.getEvolutionChain(idEvolutionChain).execute();
+
+        if (!response.isSuccessful()) {
+            throw new IOException(response.errorBody() != null ? response.errorBody().string() : "Unknown error");
+        }
+        return response.body();
+    }
+
+    @Override
+    public PokemonSpecieResponse getSpecieByPokemonId(String pokemonId) throws IOException {
+        Response<PokemonSpecieResponse> response = pokeApi.getPokemonSpecieByPokemonId(pokemonId).execute();
 
         if (!response.isSuccessful()) {
             throw new IOException(response.errorBody() != null ? response.errorBody().string() : "Unknown error");

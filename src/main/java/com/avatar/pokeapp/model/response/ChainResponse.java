@@ -7,5 +7,5 @@ import java.util.List;
 @Data
 public class ChainResponse {
     private List<EvolvesToResponse> evolves_to;
-
+    private SpecieResponse species;
 }

@@ -12,4 +12,7 @@ public interface PokemonService {
 
     PokemonResponse getPokemonInformation(String id) throws IOException;
 
+    PokemonDetail getEvolutionByPokeId(String pokemonId) throws IOException;
+    List<PokemonDetail> getEvolutionListByPokeId(String pokemonId) throws IOException;
+
 }

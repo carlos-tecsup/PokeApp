@@ -1,9 +1,12 @@
 package com.avatar.pokeapp.model.api;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 
 
 @Data
+@Builder
 public class PokemonDetail {
     private String id;
     private String name;

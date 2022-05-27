@@ -1,12 +1,15 @@
 package com.avatar.pokeapp.model.dto;
 
 import com.avatar.pokeapp.model.api.Info;
+import lombok.Builder;
 import lombok.Data;
 
 import java.util.List;
+
 @Data
 public class PokemonDetailDto {
     private String name;
+    private String imgUrl;
     private String mainType;
     private String urlImage;
     private int baseExperience;
